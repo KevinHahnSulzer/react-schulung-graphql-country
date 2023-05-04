@@ -8,10 +8,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const countries = ['DE', 'FR', 'ES'];
+
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <Country />
+      {countries &&
+        countries.map((code) => {
+          return <Country code={code} />;
+        })}
     </ApolloProvider>
   );
 }
